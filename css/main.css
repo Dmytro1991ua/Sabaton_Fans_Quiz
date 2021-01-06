@@ -1,0 +1,65 @@
+/*CSS variables */
+:root {
+    --color-dark-blue: #090c1b;
+    --color-mantis: #7ac142;
+    --color-mantis-darker: #5a803d;
+    --color-lighter-blue: #153c6b;
+    --color-white: #ffffff;
+    --color-floral-white: #f7f6f2;
+    --color-black: #000000;
+    --color-tomato: #FF6347;
+    --color-prealoder-1:#9370DB;
+    --color-prealoder-2:#BA55D3;
+    --color-preloader-3: #FF00FF;
+}
+
+/* General styles */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+   max-width: 117rem;
+   margin: 0 auto;
+   padding: 0 1.6rem;
+}
