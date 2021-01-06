@@ -36,6 +36,12 @@ li {
     list-style: none;
 }
 
+img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+
 html {
     font-size: 62.5%;
     scroll-behavior: smooth;
@@ -49,6 +55,7 @@ body {
     font-size: 1.6rem;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     box-sizing: border-box;
+    color: var(--color-white);
 }
 
 .wrapper {
@@ -59,7 +66,110 @@ body {
 }
 
 .container {
-   max-width: 117rem;
-   margin: 0 auto;
-   padding: 0 1.6rem;
+    max-width: 117rem;
+    margin: 0 auto;
+    padding: 0 1.6rem;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    padding: 0 2rem;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/bg-phone.jpg);
+    background-position: 52% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+}
+
+@media (min-width: 56em) {
+    .hero {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/bg-desktop.jpg);
+        background-position: 50% 50%;
+    }
+}
+
+.hero__body {
+    flex: 1 1 auto;
+    max-width: 114rem;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 100em) {
+    .hero__body {
+        max-width: 151rem;
+    }
+}
+
+.hero__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 6rem;
+    padding-top: 2rem;
+}
+
+@media (min-width: 62em) {
+    .hero__info {
+        margin-bottom: 12rem;
+        padding-top: 9rem;
+    }
+}
+
+.hero__title {
+    font-size: calc(24px + 28 * ((100vw - 320px) / (1920 - 320)));
+    text-align: center;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    line-height: 1.5;
+}
+
+.hero__btn {
+    display: inline-block;
+    font-size: 2rem;
+    text-transform: uppercase;
+    padding: 1.5rem 4rem;
+    background-color: var(--color-mantis);
+    color: var(--color-white);
+    border-radius: 1.6rem;
+    letter-spacing: .2rem;
+    transition: all .3s ease-in-out;
+}
+
+.hero__btn:hover {
+    background-color: var(--color-mantis-darker);
+}
+
+.hero__slider {
+    width: 100%;
+}
+
+.hero__slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero__img {
+    height: 26rem;
+    object-fit: cover;
+    margin-bottom: .8rem;
+    border-radius: 1.6rem;
+}
+
+.hero__slider-title {
+    font-size: 2.4rem;
+    margin-bottom: .4rem;
+}
+
+.hero__slider-subtitle {
+    font-size: 1.7rem;
 }
