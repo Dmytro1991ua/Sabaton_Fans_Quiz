@@ -3,7 +3,7 @@ export function swiper() {
       slidesPerView: 1,
       spaceBetween: 10,
       grabCursor: true,
-      slideToClickedSlide: true,
+      //slideToClickedSlide: true,
       preloadImages: false,
       watchSlidesVisibility: true,
       watchSlidesProgress: true,
