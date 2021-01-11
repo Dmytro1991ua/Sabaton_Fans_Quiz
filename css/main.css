@@ -346,11 +346,29 @@ body {
 
 .quiz-questions__answer-indecator {
     border: none;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2rem;
+    height: 2rem;
     background-color: var(--color-silver);
     border-radius: 50%;
     cursor: pointer;
+    display: flex;
+}
+
+.quiz-questions__answer-indecator.correct,
+.quiz-questions__answer-indecator.wrong {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+}
+
+.quiz-questions__answer-indecator.correct {
+    background-color: var(--color-mantis);
+    background-image: url(../img/Indecators/correct.png);
+}
+
+.quiz-questions__answer-indecator.wrong {
+    background-color: var(--color-tomato);
+    background-image: url(../img/Indecators/wrong.png);
 }
 
 @media (min-width: 48em) {

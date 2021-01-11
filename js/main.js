@@ -15,7 +15,8 @@ const hideHeroSection = (event) => {
    }
 };
 
-// const hideQuizQuestionSection = (event) => {
+//  hide quizQuestionSection and show quizResults question
+// export const hideQuizQuestionSection = (event) => {
 //    const target = event.target;
    
 //    if (target.classList.contains("quiz-questions__btn")) {

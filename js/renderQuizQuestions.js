@@ -1,15 +1,20 @@
+//import { hideQuizQuestionSection } from "./main.js";
+
 const renderQuizQuestions = () => {
    const questionNumber = document.querySelector(".quiz-questions__question-number"),
       questionTitle = document.querySelector(".quiz-questions__title"),
       answerOptionsContainer = document.querySelector(".quiz-questions__answer-options"),
       questionsSection = document.querySelector(".quiz-questions"),
-      answerIndecators = document.querySelectorAll(".quiz-questions__answer-indecators");
-
+      answerIndecatorsContainer = document.querySelector(".quiz-questions__answer-indecators"),
+      quizQuestionsSection = document.querySelector(".quiz-questions"),
+      quizResultsSection = document.querySelector(".quiz-results");
 
    let currentQuestion;
    let questionCounter = 0;
    let availbleQuestions = [];
    let availbleAnswerOptions = [];
+   let correctAnswers = 0;
+   let answerAttempt = 0;
 
    //push all quiz questions to  avaibleQuestions array
    const getAvailbleQuestion = () => {
@@ -55,8 +60,14 @@ const renderQuizQuestions = () => {
             //compare clicked answer option btn with a correct answer
             if (id === currentQuestion.correctAnswer) {
                answerOption.classList.add("correct");
+               //add the indecator to correct mark
+               updateAnswerIndecator("correct");
+               // add all correct answers
+               correctAnswers++;
             } else {
                answerOption.classList.add("wrong");
+               //add the indecator to wrong mark
+               updateAnswerIndecator("wrong");
 
                //set a correct answer while a wrong answer was selected
                [...answerOptionsContainer.children].forEach(answerOption => {
@@ -65,6 +76,7 @@ const renderQuizQuestions = () => {
                   }
                });
             }
+            answerAttempt++;
             disableAnswerOptionClick();
          };
          answerOption.addEventListener("click", getAnswerOptionResult);
@@ -106,6 +118,44 @@ const renderQuizQuestions = () => {
       setAvaibleAnswersOptions();
    };
 
+   // create(add to) answer indecator btns in html
+   const createAnswerOptionIndecator = () => {
+      answerIndecatorsContainer.innerHTML = "";
+      //create answer indicator btns in HTML
+      quizQuestions.forEach(question => {
+         const indecator = document.createElement("button");
+         indecator.classList.add("quiz-questions__answer-indecator");
+         answerIndecatorsContainer.appendChild(indecator);
+      })
+   };
+
+   // apply a certain class (correct or wrong) to the answer indecator after a certain answer was selected
+   const updateAnswerIndecator = (answerMarkType) => {
+      answerIndecatorsContainer.children[questionCounter - 1].classList.add(answerMarkType);
+   };
+
+   // hide quizQuestionSection and show quizResults question
+   const quizOver = (event) => {
+      const target = event.target;
+    
+      if (target.classList.contains("quiz-questions__btn")) {
+         quizQuestionsSection.classList.remove("show");
+         quizResultsSection.classList.add("show");
+         renderQuizResults();
+      }
+   }
+
+   // update UI with a quiz results
+   const renderQuizResults = () => {
+      const percentage = (correctAnswers / quizQuestions.length) * 100;
+
+      quizResultsSection.querySelector(".quiz-results__total").textContent = quizQuestions.length;
+      quizResultsSection.querySelector(".quiz-results__attempt").textContent = answerAttempt;
+      quizResultsSection.querySelector(".quiz-results__correct").textContent = correctAnswers;
+      quizResultsSection.querySelector(".quiz-results__wrong").textContent = answerAttempt - correctAnswers;
+      quizResultsSection.querySelector(".quiz-results__percentage").textContent = `${percentage.toFixed(2)}%`;
+      quizResultsSection.querySelector(".quiz-results__total-score").textContent = `${correctAnswers} / ${quizQuestions.length}` ;
+   };
 
    // implement logic when a next btn is clicked
    const nextQuestion = (event) => {
@@ -113,16 +163,18 @@ const renderQuizQuestions = () => {
 
       if (target.classList.contains("quiz-questions__btn")) {
          // if questionCounter reaches the last question, then quiz is over, otherwise render question
-         questionCounter === quizQuestions.length ? console.log("quiz is over") : getNewQuestion();
+         questionCounter === quizQuestions.length ? quizOver(event) : getNewQuestion();
       }
    };
 
    questionsSection.addEventListener('click', nextQuestion);
    window.addEventListener("load", () => {
-      // when a window is loaded push quiz questions into avaibleQuestions and get current new question
+      // when a window is loaded push quiz questions into avaibleQuestions, get current new question and create answers indecator
       getAvailbleQuestion();
       getNewQuestion();
+      createAnswerOptionIndecator();
    });
+
 }
 
 export default renderQuizQuestions;
