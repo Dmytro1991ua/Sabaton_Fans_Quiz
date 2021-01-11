@@ -1,3 +1,4 @@
+import renderQuizQuestions from "./renderQuizQuestions.js";
 import { swiper } from "./swiper.js";
 
 const heroSection= document.querySelector(".hero");
@@ -14,14 +15,14 @@ const hideHeroSection = (event) => {
    }
 };
 
-const hideQuizQuestionSection = (event) => {
-   const target = event.target;
+// const hideQuizQuestionSection = (event) => {
+//    const target = event.target;
    
-   if (target.classList.contains("quiz-questions__btn")) {
-      quizQuestionsSection.classList.remove("show");
-      quizResultsSection.classList.add("show");
-   }
-};
+//    if (target.classList.contains("quiz-questions__btn")) {
+//       quizQuestionsSection.classList.remove("show");
+//       quizResultsSection.classList.add("show");
+//    }
+// };
 
 const hideQuizResultsSection = (event) => {
    const target = event.target;
@@ -34,7 +35,8 @@ const hideQuizResultsSection = (event) => {
 
 
 heroSection.addEventListener("click", hideHeroSection);
-quizQuestionsSection.addEventListener("click", hideQuizQuestionSection);
+//quizQuestionsSection.addEventListener("click", hideQuizQuestionSection);
 quizResultsSection.addEventListener("click", hideQuizResultsSection);
 
 swiper();
+renderQuizQuestions();

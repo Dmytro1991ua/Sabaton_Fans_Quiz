@@ -26,7 +26,7 @@ const quizQuestions = [
       answerOptions: ["Uprising", "Screaming Eagles", "Ghost Division", "Cliffs Of Gallipoli"],
       correctAnswer: 0
    },
-   
+
    {
       question: "What battle was centered around the song `Price Of A Mile` from the album `The Art of War`?",
       answerOptions: ["The Battle of Berlin", "The Battle of Kursk", "The Battle of Warsaw", "The Battle of Passchendaele"],
@@ -49,7 +49,7 @@ const quizQuestions = [
       answerOptions: ["Francis Pegahmagabow", "Noah Adamia", "Hiram Berdan", "Herman Davis"],
       correctAnswer: 0
    },
-   
+
    {
       question: "Who did lead 16 men against the German defensive machine gun during the Meuse-Argonne Offensive",
       answerOptions: ["Frank Luke", "Noah Adamia", "Hiram Berdan", "Alvin York"],
