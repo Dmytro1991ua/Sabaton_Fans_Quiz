@@ -102,7 +102,55 @@ body {
     background-color: var(--color-mantis-darker);
 }
 
-/* Hero Section */
+/* Preloader */
+
+.preloader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-lighter-blue);
+    z-index: 100;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    transition: all 1s ease;
+}
+
+.preloader-container__loader {
+    width: 9rem;
+    height: 9rem;
+    border: 10px solid var(--color-mantis-darker);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-radius: 50%;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+}
+
+.preloader-container__loader::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: var(--color-mantis-darker);
+    margin: -10px 0 0 -10px;
+}
+
+.preloader-container.opacity-0 {
+    opacity: 0;
+}
+
 .hero {
     min-height: 100vh;
     display: flex;
@@ -145,6 +193,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    animation: fadeInRight .8s ease-in-out;
 }
 
 .hero.hide {
@@ -162,6 +211,7 @@ body {
 .hero__slider {
     width: 100%;
     padding-bottom: 1rem;
+    animation: fadeInLeft .8s ease-in-out;
 }
 
 @media (min-width: 75em) {
@@ -213,17 +263,13 @@ body {
     display: flex;
 }
 
-/* .quiz-questions.hide,
-.quiz-results.hide {
-    display: none;
-} */
-
 .quiz-questions__body,
 .quiz-results__body {
     background-color: var(--color-lighter-blue);
     padding: 1rem;
     border-radius: 1.5rem;
     border: 2px solid var(--color-mantis);
+    animation: fadeInRight .8s ease-in-out;
 }
 
 .quiz-questions__item {
@@ -385,13 +431,8 @@ body {
 /* Quiz Results */
 
 .quiz-results {
-    /* display: flex; */
     text-align: center;
 }
-
-/* .quiz-results.hide {
-    display: none;
-} */
 
 .quiz-results__body {}
 
@@ -484,5 +525,49 @@ body {
 
     100% {
         transform: translateX(0%);
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        transform: translateX(4rem);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0rem);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInLeft {
+    0% {
+        transform: translateX(-4rem);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0rem);
+        opacity: 1;
+    }
+}
+
+@keyframes rotate {
+    from {}
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }
