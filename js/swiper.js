@@ -1,3 +1,5 @@
+"use strict"
+
 export function swiper() {
    const swiper = new Swiper(".hero__slider", {
       slidesPerView: 1,

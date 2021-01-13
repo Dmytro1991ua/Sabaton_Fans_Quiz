@@ -1,3 +1,5 @@
+"use strict"
+
 import runPreloader from "./preloader.js";
 import { swiper } from "./swiper.js";
 
@@ -17,6 +19,7 @@ const runQuizApp = () => {
    let availbleAnswerOptions = [];
    let correctAnswers = 0;
    let answerAttempt = 0;
+   let questionLimit = 5; 
 
    // hide hero section and show quizQestion section to start a quiz
    const startQuiz = (event) => {
@@ -40,7 +43,7 @@ const runQuizApp = () => {
 
    //set a current question number of all avaible questions and increase a count of each question
    const setQuestionNumber = () => {
-      questionNumber.textContent = `Question ${questionCounter + 1} of ${quizQuestions.length}`;
+      questionNumber.textContent = `Question ${questionCounter + 1} of ${questionLimit}`; 
       questionCounter++;
    };
 
@@ -139,11 +142,12 @@ const runQuizApp = () => {
    const createAnswerOptionIndicator = () => {
       answerIndecatorsContainer.innerHTML = "";
       //create answer indicator btns in HTML
-      quizQuestions.forEach(question => {
+      const totalQuestion = questionLimit; 
+      for (let i = 0; i < totalQuestion; i++) {
          const indecator = document.createElement("button");
          indecator.classList.add("quiz-questions__answer-indecator");
          answerIndecatorsContainer.appendChild(indecator);
-      })
+      }
    };
 
    // apply a certain class (correct or wrong) to the answer indecator after a certain answer was selected
@@ -166,12 +170,12 @@ const runQuizApp = () => {
    const renderQuizResults = () => {
       const percentage = (correctAnswers / quizQuestions.length) * 100;
 
-      quizResultsSection.querySelector(".quiz-results__total").textContent = quizQuestions.length;
+      quizResultsSection.querySelector(".quiz-results__total").textContent = questionLimit; //quizQuestions.length ==> all questions
       quizResultsSection.querySelector(".quiz-results__attempt").textContent = answerAttempt;
       quizResultsSection.querySelector(".quiz-results__correct").textContent = correctAnswers;
       quizResultsSection.querySelector(".quiz-results__wrong").textContent = answerAttempt - correctAnswers;
       quizResultsSection.querySelector(".quiz-results__percentage").textContent = `${percentage.toFixed(2)}%`;
-      quizResultsSection.querySelector(".quiz-results__total-score").textContent = `${correctAnswers} / ${quizQuestions.length}`;
+      quizResultsSection.querySelector(".quiz-results__total-score").textContent = `${correctAnswers} / ${questionLimit}`; //quizQuestions.length ==> all questions
    };
 
    // implement logic when a next btn is clicked
@@ -180,7 +184,7 @@ const runQuizApp = () => {
 
       if (target.classList.contains("quiz-questions__btn")) {
          // if questionCounter reaches the last question, then quiz is over, otherwise render question
-         questionCounter === quizQuestions.length ? quizOver(event) : getNewQuestion();
+         questionCounter === questionLimit ? quizOver(event) : getNewQuestion();
       }
    };
 
@@ -188,6 +192,7 @@ const runQuizApp = () => {
       questionCounter = 0;
       correctAnswers = 0;
       answerAttempt = 0;
+      availbleQuestions = [];
    };
 
 
