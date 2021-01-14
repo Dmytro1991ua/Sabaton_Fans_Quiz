@@ -2,6 +2,7 @@
 
 import runPreloader from "./preloader.js";
 import { swiper } from "./swiper.js";
+import runQuizTimer from "./timer.js";
 
 const runQuizApp = () => {
    const questionNumber = document.querySelector(".quiz-questions__question-number"),
@@ -11,7 +12,8 @@ const runQuizApp = () => {
       answerIndecatorsContainer = document.querySelector(".quiz-questions__answer-indecators"),
       heroSection = document.querySelector(".hero"),
       quizQuestionsSection = document.querySelector(".quiz-questions"),
-      quizResultsSection = document.querySelector(".quiz-results");
+      quizResultsSection = document.querySelector(".quiz-results"),
+      nextBtn = document.querySelector(".quiz-questions__btn");
 
    let currentQuestion;
    let questionCounter = 0;
@@ -19,7 +21,8 @@ const runQuizApp = () => {
    let availbleAnswerOptions = [];
    let correctAnswers = 0;
    let answerAttempt = 0;
-   let questionLimit = 5; 
+   let questionLimit = 5;
+   let timer;
 
    // hide hero section and show quizQestion section to start a quiz
    const startQuiz = (event) => {
@@ -43,7 +46,7 @@ const runQuizApp = () => {
 
    //set a current question number of all avaible questions and increase a count of each question
    const setQuestionNumber = () => {
-      questionNumber.textContent = `Question ${questionCounter + 1} of ${questionLimit}`; 
+      questionNumber.textContent = `Question ${questionCounter + 1} of ${questionLimit}`;
       questionCounter++;
    };
 
@@ -57,7 +60,6 @@ const runQuizApp = () => {
       //get a position of question in the array and remove it to avoid repeation
       const quizQuestionPosition = availbleQuestions.indexOf(quizRandomQuestion);
       availbleQuestions.splice(quizQuestionPosition, 1);
-
    };
 
    // push all answers options to availbleAnswerOptions array, create answer options in HTML and update UI 
@@ -117,10 +119,10 @@ const runQuizApp = () => {
             }
             answerAttempt++;
             disableAnswerOptionClick();
+
          };
          answerOption.addEventListener("click", getAnswerOptionResult);
       }
-
    };
 
    // make answer option buttons disable (unclickable ) when a certain answer was selected
@@ -136,13 +138,17 @@ const runQuizApp = () => {
       setAvaibleQuestion();
 
       setAvaibleAnswersOptions();
+
+      //first if there is a timer running => clear it and then we run a timer
+      if (timer) clearInterval(timer);
+      timer = runQuizTimer();
    };
 
    // create(add to) answer indecator btns in html
    const createAnswerOptionIndicator = () => {
       answerIndecatorsContainer.innerHTML = "";
       //create answer indicator btns in HTML
-      const totalQuestion = questionLimit; 
+      const totalQuestion = questionLimit;
       for (let i = 0; i < totalQuestion; i++) {
          const indecator = document.createElement("button");
          indecator.classList.add("quiz-questions__answer-indecator");
@@ -153,6 +159,8 @@ const runQuizApp = () => {
    // apply a certain class (correct or wrong) to the answer indecator after a certain answer was selected
    const updateAnswerIndicator = (answerMarkType) => {
       answerIndecatorsContainer.children[questionCounter - 1].classList.add(answerMarkType);
+      //show next btn when a certain option was selected
+      nextBtn.classList.toggle("show");
    };
 
    // hide quizQuestionSection and show quizResults question
@@ -185,6 +193,8 @@ const runQuizApp = () => {
       if (target.classList.contains("quiz-questions__btn")) {
          // if questionCounter reaches the last question, then quiz is over, otherwise render question
          questionCounter === questionLimit ? quizOver(event) : getNewQuestion();
+         //hide next btn on click before new quiz question
+         nextBtn.classList.toggle("show");
       }
    };
 
@@ -214,7 +224,6 @@ const runQuizApp = () => {
          resetQuiz();
       }
    };
-
 
    // event listeners
    heroSection.addEventListener("click", startQuiz);
