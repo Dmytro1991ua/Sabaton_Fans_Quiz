@@ -160,7 +160,7 @@ const runQuizApp = () => {
    const updateAnswerIndicator = (answerMarkType) => {
       answerIndecatorsContainer.children[questionCounter - 1].classList.add(answerMarkType);
       //show next btn when a certain option was selected
-      nextBtn.classList.toggle("show");
+      nextBtn.classList.add("show");
    };
 
    // hide quizQuestionSection and show quizResults question
@@ -176,14 +176,14 @@ const runQuizApp = () => {
 
    // update UI with a quiz results
    const renderQuizResults = () => {
-      const percentage = (correctAnswers / quizQuestions.length) * 100;
+      const percentage = (correctAnswers / questionLimit) * 100;
 
-      quizResultsSection.querySelector(".quiz-results__total").textContent = questionLimit; //quizQuestions.length ==> all questions
+      quizResultsSection.querySelector(".quiz-results__total").textContent = questionLimit; 
       quizResultsSection.querySelector(".quiz-results__attempt").textContent = answerAttempt;
       quizResultsSection.querySelector(".quiz-results__correct").textContent = correctAnswers;
       quizResultsSection.querySelector(".quiz-results__wrong").textContent = answerAttempt - correctAnswers;
       quizResultsSection.querySelector(".quiz-results__percentage").textContent = `${percentage.toFixed(2)}%`;
-      quizResultsSection.querySelector(".quiz-results__total-score").textContent = `${correctAnswers} / ${questionLimit}`; //quizQuestions.length ==> all questions
+      quizResultsSection.querySelector(".quiz-results__total-score").textContent = `${correctAnswers} / ${questionLimit}`; 
    };
 
    // implement logic when a next btn is clicked
@@ -191,10 +191,10 @@ const runQuizApp = () => {
       const target = event.target;
 
       if (target.classList.contains("quiz-questions__btn")) {
-         // if questionCounter reaches the last question, then quiz is over, otherwise render question
+         // if questionCounter reaches the last question, then quiz is over, otherwise render new question
          questionCounter === questionLimit ? quizOver(event) : getNewQuestion();
          //hide next btn on click before new quiz question
-         nextBtn.classList.toggle("show");
+         nextBtn.classList.remove("show");
       }
    };
 
@@ -231,7 +231,6 @@ const runQuizApp = () => {
    quizResultsSection.addEventListener("click", hideQuizResultsSection);
    window.addEventListener("load", runPreloader);
 }
-
 
 swiper();
 runQuizApp();

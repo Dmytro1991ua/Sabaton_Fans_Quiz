@@ -347,6 +347,7 @@ body {
     border: 2px solid var(--color-mantis);
     -webkit-animation: fadeInRight .8s ease-in-out;
     animation: fadeInRight .8s ease-in-out;
+    min-width: 38rem;
 }
 
 .quiz-questions__item {
@@ -472,13 +473,13 @@ body {
     justify-content: space-between;
     text-align: right;
     border-top: 1px solid var(--color-mantis);
+    padding-top: 1.2rem;
 }
 
 .quiz-questions__answer-indecators {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    padding-top: 1.2rem;
     margin-bottom: 1.2rem;
 }
 
@@ -553,7 +554,6 @@ body {
 .quiz-results {
     text-align: center;
 }
-
 
 .quiz-results__item {
     width: 27rem;

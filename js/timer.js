@@ -3,7 +3,7 @@
 const runQuizTimer = () => {
    const timer = document.querySelector(".quiz-questions__timer");
    const nextBtn = document.querySelector(".quiz-questions__btn");
-   let timeLeft = 15; //seconds
+   let timeLeft = 10; //seconds
 
    const countdown = () => {
       const minutes = String(Math.floor(timeLeft / 60)).padStart(2, 0);
@@ -13,7 +13,7 @@ const runQuizTimer = () => {
 
       if (timeLeft === 0) {
          clearInterval(runTimer);
-         nextBtn.classList.toggle("show");
+         nextBtn.classList.add("show");
       }
 
       timeLeft--;
