@@ -4,7 +4,7 @@ Hey Everyone. Welcome to my journey as a Front-End Developer where I am striving
 
 #### Project Overview:
 
-##### Sabaton_Fans_Quiz project is a fully responsive app which holds custom design ideas and questions and pays tribute to one of the best Heavy Metal band called 'Sabaton' from Sweeden and at the same time badass history teacher you could ever find.
+###### Sabaton_Fans_Quiz project is a fully responsive app which holds custom design ideas and questions and pays tribute to one of the best Heavy Metal band called 'Sabaton' from Sweeden and at the same time badass history teacher you could ever find.
 
 #### Main Features of Sabaton_Fans_Quiz App:
 * Fully responsive app (Mobile First Approach).
