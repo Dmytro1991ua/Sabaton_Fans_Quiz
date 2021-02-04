@@ -20,4 +20,4 @@ Hey Everyone. Welcome to my journey as a Front-End Developer where I am striving
 
 #### HTML/HTML5, CSS3, BEM, JS, Responsive Web Design, Mobile First Approach.
 
-A link on GitHub Pages - https://dmytro1991ua.github.io/Sabaton_Fans_Quiz/
+A link on GitHub Pages - https://sabaton-badass-quiz.netlify.app/
