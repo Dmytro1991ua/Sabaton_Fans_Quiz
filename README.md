@@ -2,6 +2,8 @@ Hey Everyone. Welcome to my journey as a Front-End Developer where I am striving
 
 # Sabaton_Fans_Quiz Project
 
+![Sabaton Fans Quiz - Google Chrome 2021-02-13 19-00-56 (1)](https://user-images.githubusercontent.com/61331410/107856591-d02d1380-6e31-11eb-9e88-e081955caf6b.gif)
+
 #### Project Overview:
 
 ###### Sabaton_Fans_Quiz project is a fully responsive app which holds custom design ideas and questions and pays tribute to one of the best Heavy Metal band called 'Sabaton' from Sweeden and at the same time badass history teacher you could ever find.
